@@ -10,6 +10,7 @@ import Foundation
 
 protocol MyBankNetworkModuleAccessTokenManagerProtocol {
     func isHasToken() -> Bool
+    func isTokenExpired() -> Bool
     func fetchAccessToken() -> String
     func fetchRefreshToken() -> String
     func refreshWith(apiToken: APIToken) throws
