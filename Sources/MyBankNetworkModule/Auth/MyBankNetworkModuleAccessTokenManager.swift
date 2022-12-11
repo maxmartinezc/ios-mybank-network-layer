@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 
 protocol MyBankNetworkModuleAccessTokenManagerProtocol {
     func isHasToken() -> Bool
