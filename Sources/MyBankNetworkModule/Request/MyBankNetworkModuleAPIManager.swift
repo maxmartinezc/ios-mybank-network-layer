@@ -7,11 +7,14 @@
 
 import Foundation
 
+@available(macOS 10.15.0, *)
 protocol MyBankNetworkModuleAPIManagerProtocol {
     func perform(_ request: MyBankNetworkModuleRequestProtocol, authToken: String) async throws -> Data
-    func requestToken() async throws -> Data
+    func requestAccessToken() async throws -> Data
+    func requestRefreshToken(rToken: String) async throws -> Data
 }
 
+@available(macOS 10.15.0, *)
 class MyBankNetworkModuleAPIManager: MyBankNetworkModuleAPIManagerProtocol {
     private let urlSession: URLSession
     
@@ -40,7 +43,11 @@ class MyBankNetworkModuleAPIManager: MyBankNetworkModuleAPIManagerProtocol {
         return data
     }
     
-    func requestToken() async throws -> Data {
-        try await perform(MyBankNetworkModuleAuthTokenRequest.auth)
+    func requestAccessToken() async throws -> Data {
+        try await perform(MyBankNetworkModuleAuthTokenRequest.accessToken)
+    }
+    
+    func requestRefreshToken(rToken token: String) async throws -> Data {
+        try await perform(MyBankNetworkModuleAuthTokenRequest.refreshToken(refreshToken: token))
     }
 }

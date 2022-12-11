@@ -1,3 +1,3 @@
-# MyBankNetworkModule
+# iOSMyBankNetworkModule
 
-A description of this package.
+Layer network for make request to back-end APIs.

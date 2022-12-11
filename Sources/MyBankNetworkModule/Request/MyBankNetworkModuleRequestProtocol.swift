@@ -67,7 +67,7 @@ public extension MyBankNetworkModuleRequestProtocol {
         }
 
         if addAuthorizationToken {
-            urlRequest.setValue(authToken, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue(authToken, forHTTPHeaderField: MyBankNetworkModuleAPIConstants.authorizationHeader)
         }
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
